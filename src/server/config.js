@@ -23,19 +23,21 @@ module.exports = app => {
   app.use(bodyParser.text());
   app.use(urlencodedParser);
   // middleware para que las rutas protegidas requieran el uso de el access-token
-  const autorizacion = rutasProtegidas.use(async (req, res, next) => {
-    const token = req.headers["access-token"];
-
-    if (token) {
-      comprobarJWT(token, req, res, next);
-    } else {
+  
+  const verificarTokenString = rutaVerificaPorString.use(async (req, res, next) => {
+    const token = req.headers["api-token"];
+    try {
+      if (token !== process.env.JWT_SECRET) throw new ErrorDefinido('INVALID_TOKEN');
+      next();
+    } catch (err) {
       res.json({
         msg: 'err',
-        mensaje: "INVALID_TOKEN_AC"
+        mensaje: "INVALID_API_TOKEN_STRING",
+        token
       });
     }
   });
 
-  require("../routes/ventas_transferencias_electronicas/ventas")(app);
+  require("../routes/ventas_transferencias_electronicas/ventas")(app,verificarTokenString);
   return app;
 };
