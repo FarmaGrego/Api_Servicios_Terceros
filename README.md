@@ -1,2 +1,5 @@
-# api_servicios_externos
-Api utilizada para comunicar el sistema de LUCFARMA con las APIs de terceros
+# Api Atencion Cliente
+~~~
+Para ejecutar el api usar el comando: npm start 
+Se ejecutará en http://localhost:3000
+~~~
