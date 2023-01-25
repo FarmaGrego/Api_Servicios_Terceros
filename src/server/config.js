@@ -36,6 +36,6 @@ module.exports = app => {
     }
   });
 
-  require("../routes/ventas_transferencias_electronicas/ventas")(app, autorizacion);
+  require("../routes/ventas_transferencias_electronicas/ventas")(app);
   return app;
 };

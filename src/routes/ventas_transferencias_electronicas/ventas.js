@@ -5,8 +5,8 @@ const router = Router();
 
 const { Transferencias } = require("../../controller/all_controllers");
 
-module.exports = (app, verificarTokenString) => {
-  router.post('/apifsg-pr/:url*', verificarTokenString, Transferencias.enviarFSGprivate);
+module.exports = (app) => {
+  router.post('/apifsg-pr/:url*', Transferencias.enviarFSGprivate);
   app.use(router);
 
 };
