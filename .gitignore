@@ -105,3 +105,4 @@ dist
 
 /src/public/imagenes/
 src/public/imagenes/
+node_modules
