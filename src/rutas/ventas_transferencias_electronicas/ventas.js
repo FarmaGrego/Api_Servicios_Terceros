@@ -8,5 +8,4 @@ const { ventas } = require("../../controladores/ventas_transferencias_electronic
 module.exports = (app) => {
   router.post('/apifsg-pr/:url*', ventas.enviarFSGprivate);
   app.use(router);
-
 };
