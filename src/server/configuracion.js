@@ -13,7 +13,7 @@ const urlencodedParser = bodyParser.urlencoded({ extended: true });
 const textParser = bodyParser.text();
 
 module.exports = app => {
-  app.set("port", 8081);
+  app.set("port", 8084);
   app.use(cors());
   app.use(function (req, res, next) {
     //Enabling CORS 
@@ -67,13 +67,13 @@ module.exports = app => {
 
   require('../rutas/ventas_transferencias_electronicas/ventas')(app, verificarTokenString);
 
-  app.get('*', function (req, res) {
-    res.status(404);
-    res.json({ msg: 'err', data: new ErrorDefinido({ nombre: 'Error', descripcion: 'Ruta no existe' }) });
-  });
-  app.post('*', function (req, res) {
-    res.status(404);
-    res.json({ msg: 'err', data: new ErrorDefinido({ nombre: 'Error', descripcion: 'Ruta no existe' }) });
-  });
+  // app.get('*', function (req, res) {
+  //   res.status(404);
+  //   res.json({ msg: 'err', data: new ErrorDefinido({ nombre: 'Error', descripcion: 'Ruta no existe' }) });
+  // });
+  // app.post('*', function (req, res) {
+  //   res.status(404);
+  //   res.json({ msg: 'err', data: new ErrorDefinido({ nombre: 'Error', descripcion: 'Ruta no existe' }) });
+  // });
   return app;
 };
