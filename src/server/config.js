@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require('body-parser');
-const { comprobarJWT } = require('../controller/extra/jwt');
+const rutaVerificaPorString = express.Router();
 
 
 const rutasProtegidas = express.Router();
@@ -23,7 +23,7 @@ module.exports = app => {
   app.use(bodyParser.text());
   app.use(urlencodedParser);
   // middleware para que las rutas protegidas requieran el uso de el access-token
-  
+
   const verificarTokenString = rutaVerificaPorString.use(async (req, res, next) => {
     const token = req.headers["api-token"];
     try {
