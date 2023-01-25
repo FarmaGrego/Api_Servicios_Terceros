@@ -57,10 +57,13 @@ peticion.enviarGet = async(url, req) => {
             url,
             { headers: req.headers, },
         ).then(function (response) {
-            if(response.status !== 200)
+            if(response.status !== 200) {
+                console.log('ocurrio un error')
                 reject(error);
+            }
             resolve(response.data);
         }).catch(function (error) {
+            console.log('ocurrio un error')
             reject(error);
         });
     });

@@ -3,12 +3,11 @@ const { baseURL, ApiToken } = require('../../server/credenciales_api_interna');
 
 const ventas = {};
 
-ventas.enviarFSGprivate = (req, res) => {
+ventas.enviarFSGprivate = async (req, res) => {
     let url = req.params.url + req.params[0];
 
     let body = {
-        ...req.body,
-        //tokenData: req.decoded.data
+        ...req.body
     };
 
 
@@ -24,4 +23,4 @@ ventas.enviarFSGprivate = (req, res) => {
     });
 };
 
-module.exports = {ventas};
+module.exports = ventas;
